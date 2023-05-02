@@ -10,20 +10,19 @@ find_bsp(
 	DISABLE_GNU_EXTENSIONS)
 
 file(GLOB HAL_SOURCES "${PROJECT_SOURCE_DIR}/Drivers/STM32F4xx_HAL_Driver/Src/*.c")
-file(GLOB HAL_HEADERS "${PROJECT_SOURCE_DIR}/Drivers/STM32F4xx_HABL_Driver/Inc/*.h")
+file(GLOB HAL_HEADERS "${PROJECT_SOURCE_DIR}/Drivers/STM32F4xx_HAL_Driver/Inc/*.h")
 file(GLOB CONF_SOURCES "${PROJECT_SOURCE_DIR}/Core/Src/*.c")
 file(GLOB CONF_HEADERS "${PROJECT_SOURCE_DIR}/Core/Inc/*.h")
 
 add_bsp_based_executable(
 	    NAME control_clock
-        SOURCES
-    	    "${PROJECT_SOURCE_DIR}/main.c"
-
-    	    "${HAL_HEADERS}"
-    	    "${HAL_SOURCES}"
-    	    "${CONF_HEADERS}"
-    	    "${CONF_SOURCES}"
-    	    "${PROJECT_SOURCE_DIR}/startup_stm32f413zhtx.s"
-    GENERATE_BIN
-    GENERATE_MAP
-    LINKER_SCRIPT "${PROJECT_SOURCE_DIR}/STM32F413ZHTX.ld")
+	    SOURCES 
+		main.c
+		"${HAL_HEADERS}" 
+		"${HAL_SOURCES}" 
+		"${CONF_HEADERS}" 
+		"${CONF_SOURCES}" 
+		"${PROJECT_SOURCE_DIR}/startup_stm32f413zhtx.s"
+	    GENERATE_BIN
+	    GENERATE_MAP
+	    LINKER_SCRIPT ${PROJECT_SOURCE_DIR}/STM32F413ZHTX.ld)
